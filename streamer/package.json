@@ -1,0 +1,19 @@
+{
+  "name": "streamer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "stream_crypto.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^5.0.1",
+    "moment": "^2.22.1",
+    "plotly": "^1.0.6",
+    "random-signal": "0.0.2",
+    "signal": "^3.4.1",
+    "socket.io-client": "^2.1.1"
+  }
+}

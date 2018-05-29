@@ -31,34 +31,34 @@ For each tweets we extracted the following informations:
 
 At this step we also filtered the non english tweets by specifying it to the Twitter API.
 
-Bitcoin is the first cryptocurrency...
+Bitcoin is a cryptocurrency and worldwide payment system. It is the first decentralized digital currency, as the system works without a central bank or single administrator. The system was designed to work as a peer-to-peer network, a network in which transactions take place between users directly, without an intermediary. The Bitcoin currently has a market cap of 28'256'866'432 and a price of ~7500$ for 1 Bitcoin making it the largest cryptocurrency in the world.
 
-Zilliqa is a famous recent cryptocurrency...
+Zilliqa is the next generation, high throughput blockchain platform, designed to scale, using sharding technology which allows transaction rates to increase as the network expands which will scale with an increase of miners. It was introduced the 27th of december 2017.
 
-Nexo is a very recent cryptocurrency...
+Nexo a lending Platform platform for the world’s first instant crypto-backed loans, which gives investors and businesses access to instant cash, while retaining ownership of their digital assets and thus keeping all upside potential – a much needed service by the crypto community. It was introduced the 27th of february 2018.
 
-For the preprocessing removed all of the useless data we could from the tweets, such as http links, @pseudo tags, images, videos and hashtags (#happy->happy).
+For the preprocessing, we remove all of the useless data from the tweets, such as HTTP links, @pseudo tags, images, videos and hashtags (#happy->happy).
 We changed all of the tweets to lower case and finally stored them in a CSV file. These files are located in `/data/twitter/<CurrencySymbol>/<CurrencyName>_tweets_clean.csv`.
 
+**TODO**
 We have used the cryptocompare API (https://min-api.cryptocompare.com/) to retrieve the different currencies that we analyzed.
 BInance/Coinbase/Bitstamp/Kraken/ITBIT pour le cours du bitcoin considéré mais pas toutes les minutes
 Description - quantité - preprocessing - limitations de l'API, etc. - 1 minutes aparts - 1 heures etc
+**TODO**
 
 ## Planification and work distribution
 
 Here are the steps/milestones of the project:
 
 1. Retrieval of the tweets from the Twitter API.
-2. Sentiment analysis of the tweets, creation of a score based on the sentiment, the number of likes, the number of tweets in a time range and the number of followers of the person who tweeted.
-3. Correlation analysis entre cours du bitcoin et score calculé
+2. Retrieval of the cryptocurrencies change to USD historical data by interval of 1 minute from the cryptocompare API.
+3. Sentiment analysis of the tweets using the VADER algorithm.
+4. Computation of a score based on the sentiment, the number of likes, the number of tweets in a time range and the number of followers of the person who tweeted.
+5. Computation and visualisation of a cross-correlation score with different lag values between the tweets scores and the cryptocurrency's change in USD.
+6. Creation of a real-time visualisation tool of the correlation between the tweets and cryptocurrency's change.
+7. This step is optional and not implemented yet. This step's goal is to train a recurrent nural network (LSTM or GRU) to predict the currency of the bitcoin based on the tweets scores and the cryptocurrenciy's change. And automate the purchase and the sale of the cryptocurrency with the trained network.
 
-
-TODO FINISH
-
-4. machine learning pour faire des prédictions
-5. Test avec d’autres cryptocurrencies et peut-être ajout du cours du bitcoin dans les prédictions car il influence souvent le cours des autres monnaies (correlation analysis à faire si nécessaire).
-
-Below is the list of tasks each member of the team did. Note that we worked together on many tasks and on the analysis of the problems.
+Below is the list of the task that each member of the team worked the most on. Note that we worked together on many tasks and on the analysis of the problems.
 
 Antoine:
 - Extraction/Preprocessing of tweets
@@ -106,11 +106,20 @@ A lexicon is a collection of features (e.g. words and their sentiment classifica
 #### VADER 
 Valence Aware Dictionary and sEntiment Reasoner (VADER) is a combined lexicon and rule-based sentiment analytic software, developed by Hutto and Gilbert. VADER is capable of both detecting the polarity (positive, neutral, negative) and the sentiment intensity in text. The authors have published the lexicon and python specific module under an MIT License, thus it is considered open source and free to use. 
 
+The VADER algorithm uses negations et contractions (not good, wasn’t good), ponctuation (good!!!), capital letters, emotes :), emojis,
+intensificators (very, kind of), acronyms (lol) and other factors to calculate the scores. It outputs a compound score between -1 (negative) and 1 (positive).
+
 ### Other libraries
 
 We have used many other small libraries which can be found in the Jupyter notebooks at the root of this project.
 
 ## Conclusion
+
+Projet très intéressant
+Temps limité
+Corrélation sûrement plus importante pour les plus petites monnaies (exemple de McAfee avec “la monnaie du jour”)
+Utilisation des notebooks Jupyter en Python adaptés
+
 
 ## Annex
 

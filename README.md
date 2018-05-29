@@ -25,9 +25,13 @@ To make searches in the Twitter API you must use the query operators to match on
 - bitcoin OR #BTC OR #bitcoin OR $BTC OR $bitcoin
 
 For each tweets we extracted the following informations:
-- dffssdf
-- blabal
-- blflflf
+- ID
+- Text
+- Username
+- Number of followers of the user
+- Number of retweets
+- Number of likes
+- Creation date
 
 At this step we also filtered the non english tweets by specifying it to the Twitter API.
 
@@ -68,8 +72,6 @@ Sébastien.
 - Extraction of the currencies
 - Real-time correlation viewer
 
-## Functionnalities / Use cases
-
 ## Techniques and algorithms 
 
 ### Cross-correlation analysis
@@ -97,10 +99,12 @@ intensificators (very, kind of), acronyms (lol) and other factors to calculate t
 ## Tools and libraries
 
 ### Python
-Python 3.6
+
+We have used the Python programming language for this project in version 3.6.
 
 ### Jupyter notebooks
 
+Jupyter Notebook (formerly IPython Notebooks) is a web-based interactive computational environment for creating, executing, and visualizing Jupyter notebooks. We have used it to structure, document and execute/visualise our code.
 
 ### Pandas
 
@@ -120,7 +124,7 @@ Plotly is another library used for plots.
 
 ### tqdm
 
-We have used tqdm to show progress bars for long running operations, such a retrieval of the tweets from the Python API and the preprocessing of the tweets as it took around 14 hours.
+We have used tqdm to show progress bars for long running operations, such a retrieval of the tweets from the Python API and the preprocessing of the tweets. It took around 14 hours to preprocess the tweets but then we switched to a multi-threaded method which didn't support tqdm.
 
 ### Numpy
 
@@ -129,6 +133,12 @@ NumPy is a library for the Python programming language, adding support for large
 ### Other libraries
 
 We have used many other small Python libraries which can be found in the Jupyter notebooks at the root of this project.
+
+## Functionnalities / Use cases
+
+Here is a description of the functionalities...
+
+** TODO ** Add print screens of realtime viewer and previous analysis ?? preprocessing etc.? ** TODO **
 
 ## Analysis of the results
 

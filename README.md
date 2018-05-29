@@ -1,4 +1,4 @@
-# Analysis of Twitter sentiments with the evolution of crypto currencies
+# Correlation of Twitter sentiments with the evolution of cryptocurrencies
 
 ## Context and goal of the project
 
@@ -16,7 +16,7 @@ In the second part we will propose a tool for the realtime visualisation of the 
 
 ## Data sources, quantity, peprocessing, description
 
-The Twitter API is the source for all the tweets. It is limited to 450 requests of maximum 100 tweets per 15 minutes with the App login. It can only retrieve tweets 7 days old at most. We have retrieved around 20 days of tweets which represent ~1'000'000 tweets for the Bitcoin (BTC). We also retrieved around 10 days for two other cryptocurrencies. ~2500 tweets for Nexo (NEXO) and c15'000 for Zilliqa (ZIL).
+The Twitter API is the source for all the tweets. It is limited to 450 requests of maximum 100 tweets per 15 minutes with the App login. It can only retrieve tweets 7 days old at most. We have retrieved around 20 days of tweets which represent ~1'120'000 tweets for the Bitcoin (BTC). We also retrieved around 10 days for two other cryptocurrencies. ~2500 tweets for Nexo (NEXO) and 15'000 for Zilliqa (ZIL).
 
 Binance API
 Autres API : Kraken, CoinBase, CoinMarketCap, Blockchain.info, etc.
@@ -70,26 +70,11 @@ Sébastien.
 
 ## Functionnalities / Use cases
 
-## Techniques, algorithms and tools
-
-### Python
-Python 3.6
-
-### Jupyter notebooks
+## Techniques and algorithms 
 
 ### Cross-correlation analysis
 
-### Pandas
-
-### Plotly
-
-### Twython
-
-### Matplotlib
-
-### tqdm
-
-### numpy
+pearson algorithm with lagged correlation
 
 ### Sentiment analysis - vaderSentiment
 
@@ -109,17 +94,53 @@ Valence Aware Dictionary and sEntiment Reasoner (VADER) is a combined lexicon an
 The VADER algorithm uses negations et contractions (not good, wasn’t good), ponctuation (good!!!), capital letters, emotes :), emojis,
 intensificators (very, kind of), acronyms (lol) and other factors to calculate the scores. It outputs a compound score between -1 (negative) and 1 (positive).
 
+## Tools and libraries
+
+### Python
+Python 3.6
+
+### Jupyter notebooks
+
+
+### Pandas
+
+Pandas is the library we have used the most. It proposes useful functions to read data from our csv files, to write to them, to create and make mathematical operations on dataframes and time series. We have used it for the cross-correlation analysis.
+
+### Twython
+
+Twython is a library used to interact with the Twitter API. It proposes useful functions login and make queries on the API.
+
+### Matplotlib
+
+We have used this library for most of our plots.
+
+### Plotly
+
+Plotly is another library used for plots.
+
+### tqdm
+
+We have used tqdm to show progress bars for long running operations, such a retrieval of the tweets from the Python API and the preprocessing of the tweets as it took around 14 hours.
+
+### Numpy
+
+NumPy is a library for the Python programming language, adding support for large, multi-dimensional arrays and matrices, along with a large collection of high-level mathematical functions to operate on these arrays. We used numpy for some of the operations on the dataframes.
+
 ### Other libraries
 
-We have used many other small libraries which can be found in the Jupyter notebooks at the root of this project.
+We have used many other small Python libraries which can be found in the Jupyter notebooks at the root of this project.
+
+## Analysis of the results
+
+Here is the correlation we have calculated between tweets and cryptocurrencies...
+
+** TODO PrntScreens et explications **
 
 ## Conclusion
 
-Projet très intéressant
-Temps limité
-Corrélation sûrement plus importante pour les plus petites monnaies (exemple de McAfee avec “la monnaie du jour”)
-Utilisation des notebooks Jupyter en Python adaptés
-
+The project was very intesting but we had a limited amount of time to achieve it. We couldn't implement the machine learning step with TensorFlow as we would have liked to do.
+There is not a clear correlation between the two. We have observered that ... **TODO**. some of the elements that correlate could be used by a machine learning algorithm as an additional input to calculate )
+The Jupyter notebooks with Python and all of the libraries available for Python were very useful and adapted for this project.
 
 ## Annex
 
@@ -169,11 +190,11 @@ https://chrisalbon.com/python/data_wrangling/pandas_time_series_basics/
 Twitter seach operators https://lifehacker.com/search-twitter-more-efficiently-with-these-search-opera-1598165519
 
 ### Setup
-- Install anaconda with Jupyter version TODO, create a python 3.6 environment. Run `pip install .` in the root of the folder to install all the requirements from the requirement.txt file. Finally open the notebooks in Jupyter to run them.
+- Install anaconda with Jupyter version TODO, create a python 3.6 environment. Run `pip install .` in the root of the folder to install all the requirements from the `requirement.txt` file. Finally open the notebooks in Jupyter to run them.
 - To execute the js script, please rename `streamer/.env-sample` into `streamer/.env` and edit the file with your plotly configuration.
 
 ### Indications
-- var.csv contains variables to retrieve historical data. Please do not touch this file.
+- `var.csv` contains variables to retrieve historical data. Please do not touch this file.
 
 ### Authors
 - Antoine Drabble

@@ -1,2 +1,5 @@
 streamer/node_modules
 streamer/.env
+
+# Ignore bitcoin tweets (too big files)
+data/twitter/BTC/*

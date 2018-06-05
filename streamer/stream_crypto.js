@@ -16,8 +16,8 @@ socket.on("m", function(message) {
     var type = table[4];
     if (type == 1 || type == 2 ) {
         var price = table[5];
-        //var now = moment().format("YYYY-MM-DD HH:mm:ss");
-        var now = moment().add(-2, 'hours').format("YYYY-MM-DD HH:mm:ss");
+        var now = moment().format("YYYY-MM-DD HH:mm:ss");
+        //var now = moment().add(-2, 'hours').format("YYYY-MM-DD HH:mm:ss");
         console.log(now, price);
         var streamObject = JSON.stringify({ x : now, y : price });
         plotlystream.write(streamObject+'\n');

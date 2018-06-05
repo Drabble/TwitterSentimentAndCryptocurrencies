@@ -2,4 +2,9 @@ streamer/node_modules
 streamer/.env
 
 # Ignore bitcoin tweets (too big files)
-data/twitter/BTC/*
+data/twitter/BTC/bitcoin_tweets_clean.csv
+data/twitter/BTC/bitcoin_tweets_raw.csv
+data/twitter/ZIL/zilliqa_tweets_raw.csv
+data/twitter/ZIL/zilliqa_tweets_clean.csv
+data/twitter/NEXO/nexo_tweets_clean.csv
+data/twitter/NEXO/nexo_tweets_raw.csv

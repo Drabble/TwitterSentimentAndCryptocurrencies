@@ -245,7 +245,7 @@ Indeed, we obtain a score of 0.3 at a lag of 0.
 
 #### Comparison
 
-If we compare the 3 graphs of the different cryptocurrencies (image below) we can observe that most of the time, in each currency, when there is a big spike of Twitter sentiment, the currency drops. That is maybe caused by people seeing the hype and decide to sell. And in some cases, we observed that the price increases when there is a negative Twitter sentiment. An LSTM might be able to make use of those large spikes to decide when to sell.
+If we compare the 3 graphs of the different cryptocurrencies (image below) we can observe that most of the time, in each currency, when there is a big spike of Twitter sentiment, the currency drops. That is maybe caused by people seeing the hype and so they decide to sell. In fewer cases, we observed that the price increases when there is a negative Twitter sentiment. A LSTM might be able to make use of those large spikes to decide when to sell.
 
 ![alt text](img/Comparison.png)
 

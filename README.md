@@ -309,8 +309,11 @@ https://chrisalbon.com/python/data_wrangling/pandas_time_series_basics/
 Twitter seach operators https://lifehacker.com/search-twitter-more-efficiently-with-these-search-opera-1598165519
 
 ### Setup
-- Install anaconda with Jupyter version TODO, create a python 3.6 environment. Run `pip install .` in the root of the folder to install all the requirements from the `requirement.txt` file. Finally open the notebooks in Jupyter to run them.
-- To execute the js script, please rename `streamer/.env-sample` into `streamer/.env` and edit the file with your plotly configuration.
+- Install anaconda with Jupyter, create a python 3.6 environment. Run `pip install .` in the root of the folder to install all the requirements from the `requirement.txt` file. Finally open the notebooks in Jupyter to run them.
+- To execute the js script:
+    - please rename `streamer/.env-sample` into `streamer/.env` and edit the file with your plotly configuration.
+    - Install npm with nodejs (https://www.npmjs.com/get-npm) then `$ cd streamer/` then run this command `$ npm install && node stream_crypto.js`. You need to be in the `streamer` folder to execute the command or it may not work.
+
 
 ### Indications
 - `data/crypto/var_crypto.csv` contains variables to retrieve historical data. Please do not touch this file.

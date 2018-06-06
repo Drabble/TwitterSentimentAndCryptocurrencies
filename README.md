@@ -108,7 +108,9 @@ In this section are listed the techniques and algorithms we used to find a corre
 
 ### Cross-correlation analysis
 
-pearson algorithm with lagged correlation
+Applying a correlation on the series (tweets' scores and crypto currency) is not enough. That's why we need cross-correlation. The difference is that cross-correlation adds a lag which permit to shift one of the timeseries left or right to find, maybe, a better correlation. This is coherent with our problem as the currency changes come after the tweets' sentiments. So we are fully allowed to operate it.
+
+Now the correlation's method we use can be either Pearson, Kendall or Spearman. We tried all of them and their are pretty equivalent. However Spearman obtains globally better results because it is able to correlate on linear and non-linear data.
 
 ### Sentiment analysis - vaderSentiment
 

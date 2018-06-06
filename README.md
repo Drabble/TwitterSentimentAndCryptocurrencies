@@ -168,20 +168,91 @@ We have used many other small Python libraries which can be found in the Jupyter
 
 ## Functionnalities / Use cases
 
-Here is a description of the functionalities...
+The purpose of this project is to see the tweets' sentiments with the evolution of the crypto currency on a real time graph to decide wether to invest in the crypto or to sell it, based on sentiment emitted from tweets. So we built a realtime graph streaming the CryptoCompare API and the tweets which plots the sentiment score and the currency every time it receives new data.
 
-** TODO ** Add print screens of realtime viewer and previous analysis ?? preprocessing etc.? ** TODO **
+![alt text](img/realtime_graph.png)
+
+When a tweet is received, the same pipeline is applied:
+1. Extract creation date, textual content, number of followers and likes
+2. Clean the textual content from http links, pseudo, images and videos
+3. Compute its sentiment's compound with VADER
+4. Compute the final sentiment's score with the number of followers and likes
+5. Plot it on the realtime graph
+
+After 10 minutes, we received about 1000 tweets and 150 crypto currency updates.
+
+An additional functionality is to plot the prediction as well in order to help the user in crypto placement. We didn't have time to do this part but we would do it by building a neural network made of LSTM (Long Short Term Memory) cells, train it with the historical data and use new incoming data for prediction.
 
 ## Analysis of the results
 
-Here is the correlation we have calculated between tweets and cryptocurrencies...
+As a starting point we analyzed the **Bitcoin**. The correlation between tweets and cryptocurrencies is calculated on the derivative of tweets and cryptocurrency because we want to correlate the increase or decrease of the crypto. So when the derivative of crypto currency is a peak, it means that the increase is maximum. When it's flat, it means the crypto has stabilized. Here is the graph of tweets' and crypto's:
 
-** TODO PrntScreens et explications **
+![alt text](img/normalized.png)
+
+and here is its derivative:
+
+![alt text](img/derivative.png)
+
+It is hard to see a correlation. At  first sight we see that crypto's derivative has a large amplitude compared to the sentiment's one. Few peaks seem matching at the end but those are outliers and we can't define a rule from these impressions.
+
+That's why we computed the correlation using panda's dataframe built in method `corr` (http://pandas.pydata.org/pandas-docs/version/0.22/generated/pandas.DataFrame.corr.html) which let us choose between Pearson, Kendall and Spearman's correlation. As we are working with time series and crypto currencies, we should add a lag parameter to shift one of the series left or right in order to expect a higher correlation. This is called cross-correlation.
+
+On the following plot, we varied lag between -20 and +20 and as the data is grouped by 2h, it means means that the sentiment series is switched between -40 and +40 hours.
+
+![alt text](img/cross-corr-2h-pearson.png)
+![alt text](img/cross-corr-2h-kendall.png)
+![alt text](img/cross-corr-2h-spearman.png)
+
+A correlation of +1 or -1 means that both sentiment and crypto derivatives are matching and we can therefore use it as a predictive mechanism. A correlation of 0 means that there is absolutely no match.
+
+Kendall and Spearman look pretty the same but the best score is obtained with spearman: 0.2 at a lag of 1. However, the results are meaningless, the correlation is way too low to infer any prediction.
+
+From Wikipedia https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient:
+*The Spearman correlation between two variables is equal to the Pearson correlation between the rank values of those two variables; while Pearson's correlation assesses linear relationships, Spearman's correlation assesses monotonic relationships (whether linear or not).*
+
+We therefore think that Spearman is more suited for timeseries data where the relationships are not linear.
+
+### What about other crypto currencies ?
+
+The fact that we obtain such a bad correlation comes maybe from the high popularity of the crypto currency. The Bitcoin is very popular and twitter sentiments may not be the only element to influence its currency. So we tested with two other less known crypto: NEXO and Zilliqa.
+
+For both these cryptos we processed the same pipeline to find a correlation.
+
+#### NEXO
+
+Some tweets are missing but the whole graph is still ploted to see if the positive sentiment on 27th may has an impact on the nexo currency.
+![alt text](img/nexo.png)
+
+For the derivative, the timeseries are croped
+![alt text](img/nexo_derivative.png)
+Again, we can't say much just by observing the shape of these graphs.
+
+With the spearman cross-corelation we obtain the best correlation score of 0.3 at a laf of 10.
+![alt text](img/nexo-cross-corr-2h-spearman.png)
+
+#### Zilliqa
+
+On this plot it looks like positive sentiments make the currency decrease. An interesting rule to gain money would be to do the contrary of what people think.
+![alt text](img/zil.png)
+
+The derivative seems more correlated than the other cryptos
+![alt text](img/zil_derivative.png)
+
+Indeed, we obtain a score of 0.3 at a lag of 0.
+![alt text](img/zil-cross-corr-2h-pearson.png)
+
+## Discussion
+
+Still these two other cryptos don't give meaningfull correlations. It is very hard to predict the crypto currency based on twitter sentiments. Other factors influence the crypto but we don't know them (if we do, we would already be rich). A further analysis could be to study a correlation on more historical data, going maybe up to 6 months back, even 1 year.
+
+Another improvement could be to focus on a bigger time frame to make prediction. Here we chose to group the scores and crypto currencies by 2 hours. Maybe doing it every 12 hours or every day could increase the chance of observing a correlation, though the cryptos are very volatile.
 
 ## Conclusion
 
-The project was very intesting but we had a limited amount of time to achieve it. We couldn't implement the machine learning step with TensorFlow as we would have liked to do.
-There is not a clear correlation between the two. We have observered that ... **TODO**. some of the elements that correlate could be used by a machine learning algorithm as an additional input to calculate )
+The project was very interesting but we had a limited amount of time to achieve it. We couldn't implement the machine learning step with Keras as we would have liked to do.
+There is not a clear correlation between the two series. We have observed that when a good sentiment score appears, right after the bitcoin decreases or increases. We are not able to predict it either with the cross-correlation analysis. A recurrent neural network would have probably do better predictions after tuning well its hyperparameters but we can't say and keep it a further improvement.
+
+. some of the elements that correlate could be used by a machine learning algorithm as an additional input to calculate )
 The Jupyter notebooks with Python and all of the libraries available for Python were very useful and adapted for this project.
 
 ## Annex

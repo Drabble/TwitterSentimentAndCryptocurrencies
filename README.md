@@ -241,6 +241,12 @@ The derivative seems more correlated than the other cryptos
 Indeed, we obtain a score of 0.3 at a lag of 0.
 ![alt text](img/zil-cross-corr-2h-pearson.png)
 
+#### Comparison
+
+If we compare the 3 graphs of the different cryptocurrencies (image below) we can observe that most of the time, in each currency, when there is a big spike of Twitter sentiment, the currency drops. That is maybe caused by people seeing the hype and decide to sell. And in some cases, we observed that the price increases when there is a negative Twitter sentiment. An LSTM might be able to make use of those large spikes to decide when to sell.
+
+![alt text](img/Comparison.png)
+
 ## Discussion
 
 Still these two other cryptos don't give meaningfull correlations. It is very hard to predict the crypto currency based on twitter sentiments. Other factors influence the crypto but we don't know them (if we do, we would already be rich). A further analysis could be to study a correlation on more historical data, going maybe up to 6 months back, even 1 year.
@@ -249,10 +255,8 @@ Another improvement could be to focus on a bigger time frame to make prediction.
 
 ## Conclusion
 
-The project was very interesting but we had a limited amount of time to achieve it. We couldn't implement the machine learning step with Keras as we would have liked to do.
-There is not a clear correlation between the two series. We have observed that when a good sentiment score appears, right after the bitcoin decreases or increases. We are not able to predict it either with the cross-correlation analysis. A recurrent neural network would have probably do better predictions after tuning well its hyperparameters but we can't say and keep it a further improvement.
-
-. some of the elements that correlate could be used by a machine learning algorithm as an additional input to calculate )
+The project was very interesting but we had a limited amount of time to achieve it. We couldn't implement the machine learning step with Keras as we would have liked to do and didn't have the time (due to Twitter limitations) to get a large enough sample of tweets.
+There is not a clear correlation between the two series. We have observed that when a good sentiment score appears, right after the Bitcoin decreases or increases. We are not able to predict it either with the cross-correlation analysis. A recurrent neural network could make use of the elements that correlate to do better predictions after tuning well its hyperparameters but we can't know for sure and keep it a further improvement.
 The Jupyter notebooks with Python and all of the libraries available for Python were very useful and adapted for this project.
 
 ## Annex
